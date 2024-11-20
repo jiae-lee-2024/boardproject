@@ -1,0 +1,5 @@
+CREATE TABLE board (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content varchar(500) NOT NULL
+);
