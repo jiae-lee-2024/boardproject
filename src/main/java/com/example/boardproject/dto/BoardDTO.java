@@ -1,10 +1,9 @@
 package com.example.boardproject.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.web.ErrorResponse;
 
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor // 수정
@@ -14,4 +13,3 @@ public class BoardDTO {
     private String title;
     private String content;
 }
-

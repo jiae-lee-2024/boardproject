@@ -1,21 +1,16 @@
 package com.example.boardproject.mapper;
 
 import com.example.boardproject.dto.BoardDTO;
+import com.example.boardproject.entity.Board;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@Mapper
 public interface BoardMapper {
-
-     List<BoardDTO> getBoardList(BoardDTO boardDTO); // 모든 게시글 조회
-
-     BoardDTO selectBoardDetail(Long id); // 특정 게시글 조회
-     void insertBoard(BoardDTO boardDTO);
-     void updateBoard(BoardDTO boardDTO);
-     void deleteBoard(Long id);
+     List<BoardDTO> getBoardList(); // 모든 게시글 조회
+     BoardDTO selectBoardDetail(@RequestParam("id") Long id); // 특정 게시글 조회
+     void insertBoard(Board board);
+     void updateBoard(Board board);
+     void deleteBoard(@RequestParam("id") Long id);
 }
-
-
-
-

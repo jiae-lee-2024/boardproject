@@ -1,22 +1,16 @@
 package com.example.boardproject.service;
 
-import com.example.boardproject.dto.BoardDTO;
-import com.example.boardproject.entity.*;
+import com.example.boardproject.dto.*;
 
 import java.util.List;
 
 public interface BoardService {
-
-    List<BoardDTO> getBoardList(ListBoardRequest req) throws Exception;
-    BoardDTO getBoardDetail(DetailBoardRequest req);
+    List<BoardDTO> getBoardList();
+    BoardDTO getBoardDetail(Long id);
     void insertBoard(InsertBoardRequest req);
     void updateBoard(UpdateBoardRequest req);
-    void deleteBoard(DeleteBoardRequest req);
-
-
-
-
-
-
+    void deleteBoard(Long id);
 }
+
+
 

@@ -1,5 +1,8 @@
 package com.example.boardproject.entity;
 
+import com.example.boardproject.dto.DeleteBoardRequest;
+import com.example.boardproject.dto.InsertBoardRequest;
+import com.example.boardproject.dto.UpdateBoardRequest;
 import lombok.*;
 import org.springframework.util.StringUtils;
 
@@ -28,12 +31,7 @@ public class Board {
                 .content(StringUtils.hasText(req.getContent()) ? req.getContent() : null)
                 .build();
     }
-    // delete 메서드
-    public Board delete(DeleteBoardRequest req) {
-        return Board.builder()
-                .id(req.getId())
-                .build();
-    }
+
     // Builder 패턴을 이용한 생성자
     @Builder
     public Board(Long id, String title, String content) {
@@ -42,11 +40,4 @@ public class Board {
         this.content = content;
 
     }
-
-
-
-
 }
-
-
-

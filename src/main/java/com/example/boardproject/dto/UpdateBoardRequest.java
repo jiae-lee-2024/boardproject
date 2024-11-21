@@ -1,4 +1,4 @@
-package com.example.boardproject.entity;
+package com.example.boardproject.dto;
 
 import lombok.*;
 

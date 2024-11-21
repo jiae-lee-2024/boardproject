@@ -1,53 +1,57 @@
 package com.example.boardproject.service;
 
-import com.example.boardproject.dto.BoardDTO;
+import com.example.boardproject.dto.*;
 import com.example.boardproject.entity.*;
 import com.example.boardproject.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
 @Service
-public abstract class BoardServiceImpl implements BoardService {
-
-    private final BoardMapper boardMapper;
+public class BoardServiceImpl implements BoardService {
 
     @Autowired
-    public BoardServiceImpl(BoardMapper boardMapper) {
-        this.boardMapper = boardMapper;
+    private BoardMapper boardMapper;
+
+    @Override
+    public List<BoardDTO> getBoardList() {
+        return boardMapper.getBoardList();
     }
 
-    // 게시판 목록 조회
     @Override
-    public abstract List<BoardDTO> getBoardList(ListBoardRequest req) throws Exception;
-
-    // 게시판 상세 조회
-    @Override
-    public BoardDTO getBoardDetail(DetailBoardRequest req) {
-        return null;
+    public BoardDTO getBoardDetail(Long id) {
+        return boardMapper.selectBoardDetail(id);
     }
 
-    // 게시판 등록
     @Override
     @Transactional
     public void insertBoard(InsertBoardRequest req) {
+        // 방어코드
+        if(ObjectUtils.isEmpty(req.getTitle())){
+            System.out.println("제목이 없습니다!!!!");
+        }
 
+        if(ObjectUtils.isEmpty(req.getContent())){
+            System.out.println("내용이 없습니다!!!!");
+        }
 
+        Board board = Board.builder().build().insert(req);
+        boardMapper.insertBoard(board);
     }
 
-    // 게시판 수정
     @Override
     @Transactional
     public void updateBoard(UpdateBoardRequest req) {
-
+        Board board = Board.builder().build().update(req);
+        boardMapper.updateBoard(board);
     }
 
-    // 게시판 삭제
     @Override
     @Transactional
-    public void deleteBoard(DeleteBoardRequest req) {
-
+    public void deleteBoard(Long id) {
+        boardMapper.deleteBoard(id);
     }
 }
