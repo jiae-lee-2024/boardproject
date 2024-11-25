@@ -43,4 +43,7 @@
         DELETE FROM board
               WHERE id = #{id}
     </delete>
+
+
+
 </mapper>
