@@ -19,11 +19,11 @@ public class CommentController {
     private CommentService commentService;
 
     // 댓글 목록 조회
-    @GetMapping("/{boardId}/comments")
-    public ApiResponse getCommentsList(@PathVariable Long boardId) {
-        List<CommentDTO> getCommentsList = commentService.getCommentsList(boardId);
-        return new ApiResponse(true,"댓글 조회 성공", getCommentsList);
-    }
+//    @GetMapping("/{boardId}/comments")
+//    public ApiResponse getCommentsList(@PathVariable Long boardId) {
+//        List<CommentDTO> getCommentsList = commentService.getCommentsList(boardId);
+//        return new ApiResponse(true,"댓글 조회 성공", getCommentsList);
+//    }
     // 댓글 등록(boardId,content)
     @PostMapping("/{boardId}/comments")
     public ApiResponse insertComment(@RequestBody @Valid InsertCommentRequest req) {

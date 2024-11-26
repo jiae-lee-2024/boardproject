@@ -9,7 +9,7 @@
         ORDER BY id DESC
     </select>
 
-    <!--select-->
+    <!--select 게시글 상세조회 -->
     <select id="selectBoardDetail" parameterType="long" resultType="com.example.boardproject.dto.BoardDTO">
         SELECT
             id,
@@ -17,6 +17,16 @@
             content
           FROM board
          WHERE id = #{id}
+    </select>
+
+    <!--    댓글 목록 조회 -->
+    <select id="getCommentsBoardList" parameterType="long" resultType="com.example.boardproject.dto.CommentDTO">
+        SELECT
+             comment_id,
+             board_id,
+             content
+        From comments
+        WHERE board_id = #{board_id}
     </select>
 
     <!--insert-->

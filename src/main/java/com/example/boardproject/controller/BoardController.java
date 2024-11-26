@@ -33,12 +33,14 @@ public class BoardController {
         boardService.insertBoard(req);
         return new ApiResponse(true,"게시글 등록 성공");
     }
+
     // 게시글 수정
     @PutMapping("/update-post")
     public ApiResponse updateBoard(@RequestBody UpdateBoardRequest req){
         boardService.updateBoard(req);
         return new ApiResponse(true,"게시글 수정 성공");
     }
+
     // 게시글 삭제
     @DeleteMapping("/delete-post")
     public ApiResponse deleteBoard(@RequestParam(required = true) Long id){

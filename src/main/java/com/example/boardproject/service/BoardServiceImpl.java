@@ -23,11 +23,19 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDTO getBoardDetail(Long id) {
-        return boardMapper.selectBoardDetail(id);
+     //   return boardMapper.selectBoardDetail(id);
+
+        // 게시글 조회
+        BoardDTO boardDto = boardMapper.selectBoardDetail(id);
+
+        // 댓글 목록 조회
+        List<CommentDTO> comments = boardMapper.getCommentsBoardList(id);
+        boardDto.setComments(comments); // 댓글 목록 설정
+        return boardDto;
     }
 
     @Override
-    @Transactional
+    @Transactional //변경 일어날때만 사용
     public void insertBoard(InsertBoardRequest req) {
         // 방어코드
         if(ObjectUtils.isEmpty(req.getTitle())){
